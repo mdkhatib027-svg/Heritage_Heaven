@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Heritage Heaven</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --walnut:#2B1B14;--darkbrown:#3A2418;--gold:#B08D57;--brass:#C6A15B;
+      --cream:#F3E8D0;--parchment:#E8D8B8;--charcoal:#171311;--burgundy:#5A2E2E;
+      --border-gold:rgba(176,141,87,0.4);
+    }
+    *{box-sizing:border-box;}
+    body{
+      background:var(--walnut);color:var(--cream);font-family:'Inter',sans-serif;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+    h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:400;}
+    a{color:var(--gold);text-decoration:none;}
+
+    /* Sidebar */
+    .admin-layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh;}
+    .sidebar{
+      background:var(--charcoal);border-right:1px solid var(--border-gold);
+      padding:2rem 1.5rem;position:sticky;top:0;height:100vh;overflow-y:auto;
+    }
+    .sidebar .brand{
+      font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;
+      color:var(--cream);letter-spacing:0.08em;line-height:1.1;margin-bottom:0.25rem;
+    }
+    .sidebar .brand small{
+      display:block;font-family:'Inter',sans-serif;font-size:0.5rem;
+      letter-spacing:0.35em;color:var(--gold);font-weight:300;margin-top:4px;
+    }
+    .sidebar .divider{
+      height:1px;background:var(--border-gold);margin:2rem 0;
+    }
+    .nav-item-admin{
+      display:flex;align-items:center;gap:0.85rem;
+      padding:0.75rem 1rem;color:var(--parchment);font-size:0.85rem;
+      cursor:pointer;transition:all 0.25s ease;border-left:2px solid transparent;
+      letter-spacing:0.05em;
+    }
+    .nav-item-admin i{color:var(--gold);font-size:1.05rem;width:20px;text-align:center;}
+    .nav-item-admin:hover{background:rgba(176,141,87,0.08);color:var(--gold);}
+    .nav-item-admin.active{
+      background:rgba(176,141,87,0.12);color:var(--gold);
+      border-left-color:var(--gold);
+    }
+    .sidebar-footer{
+      position:absolute;bottom:2rem;left:1.5rem;right:1.5rem;
+      padding-top:1.5rem;border-top:1px solid var(--border-gold);
+    }
+    .user-chip{
+      display:flex;align-items:center;gap:0.75rem;font-size:0.8rem;
+      color:var(--parchment);margin-bottom:1rem;
+    }
+    .user-chip .avatar{
+      width:36px;height:36px;border-radius:50%;background:var(--gold);
+      color:var(--walnut);display:flex;align-items:center;justify-content:center;
+      font-family:'Playfair Display',serif;font-weight:600;font-size:0.9rem;
+    }
+    .logout-btn{
+      background:none;border:1px solid var(--border-gold);color:var(--parchment);
+      padding:0.5rem 1rem;font-size:0.65rem;letter-spacing:0.2em;
+      text-transform:uppercase;border-radius:0;width:100%;cursor:pointer;
+      transition:all 0.3s ease;
+    }
+    .logout-btn:hover{border-color:var(--gold);color:var(--gold);}
+
+    /* Main */
+    .main-content{padding:2.5rem 3rem;overflow-x:auto;}
+    .page-title{
+      font-size:1.8rem;color:var(--cream);margin-bottom:0.25rem;
+    }
+    .page-subtitle{
+      font-size:0.8rem;color:var(--parchment);opacity:0.6;
+      letter-spacing:0.1em;margin-bottom:2.5rem;
+    }
+
+    /* Stat cards */
+    .stats-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:1.25rem;margin-bottom:2.5rem;
+    }
+    .stat-card{
+      background:var(--darkbrown);border:1px solid var(--border-gold);
+      padding:1.5rem 1.25rem;transition:border-color 0.3s ease;
+    }
+    .stat-card:hover{border-color:var(--gold);}
+    .stat-card .icon{
+      font-size:1.5rem;color:var(--gold);margin-bottom:0.75rem;
+    }
+    .stat-card .num{
+      font-family:'Playfair Display',serif;font-size:2rem;
+      color:var(--cream);line-height:1;
+    }
+    .stat-card .label{
+      font-size:0.65rem;letter-spacing:0.2em;color:var(--parchment);
+      text-transform:uppercase;margin-top:0.5rem;opacity:0.7;
+    }
+
+    /* Toolbar */
+    .toolbar{
+      display:flex;justify-content:space-between;align-items:center;
+      margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;
+    }
+    .toolbar .search-box{
+      position:relative;flex:1;max-width:320px;
+    }
+    .toolbar .search-box input{
+      background:transparent;border:1px solid var(--border-gold);
+      color:var(--cream);padding:0.6rem 1rem 0.6rem 2.5rem;
+      border-radius:0;width:100%;font-size:0.85rem;
+    }
+    .toolbar .search-box input:focus{
+      outline:none;border-color:var(--gold);
+    }
+    .toolbar .search-box i{
+      position:absolute;left:0.9rem;top:50%;transform:translateY(-50%);
+      color:var(--gold);font-size:0.9rem;
+    }
+    .btn-admin-primary{
+      background:var(--gold);color:var(--walnut);border:1px solid var(--gold);
+      padding:0.65rem 1.5rem;font-size:0.7rem;letter-spacing:0.2em;
+      text-transform:uppercase;border-radius:0;font-weight:600;cursor:pointer;
+      transition:all 0.3s ease;
+    }
+    .btn-admin-primary:hover{background:transparent;color:var(--gold);}
+    .btn-admin-secondary{
+      background:transparent;border:1px solid var(--border-gold);
+      color:var(--parchment);padding:0.4rem 0.85rem;font-size:0.65rem;
+      letter-spacing:0.15em;text-transform:uppercase;border-radius:0;
+      cursor:pointer;transition:all 0.3s ease;
+    }
+    .btn-admin-secondary:hover{border-color:var(--gold);color:var(--gold);}
+    .btn-admin-danger{
+      background:transparent;border:1px solid rgba(192,96,96,0.4);
+      color:#d09090;padding:0.4rem 0.85rem;font-size:0.65rem;
+      letter-spacing:0.15em;text-transform:uppercase;border-radius:0;
+      cursor:pointer;transition:all 0.3s ease;
+    }
+    .btn-admin-danger:hover{background:rgba(192,96,96,0.15);border-color:#d09090;}
+
+    /* Table */
+    .admin-table{
+      width:100%;background:var(--darkbrown);
+      border:1px solid var(--border-gold);border-collapse:collapse;
+    }
+    .admin-table th{
+      text-align:left;padding:1rem 1.25rem;
+      font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;
+      color:var(--gold);border-bottom:1px solid var(--border-gold);
+      background:var(--charcoal);font-weight:500;
+    }
+    .admin-table td{
+      padding:1rem 1.25rem;font-size:0.85rem;
+      border-bottom:1px solid rgba(176,141,87,0.1);color:var(--parchment);
+      vertical-align:middle;
+    }
+    .admin-table tr:last-child td{border-bottom:none;}
+    .admin-table tr:hover td{background:rgba(176,141,87,0.04);}
+    .admin-table .thumb{
+      width:48px;height:48px;object-fit:cover;border:1px solid var(--border-gold);
+    }
+    .badge-pill{
+      font-size:0.6rem;letter-spacing:0.15em;padding:0.3rem 0.7rem;
+      border:1px solid var(--border-gold);text-transform:uppercase;
+      white-space:nowrap;
+    }
+    .badge-available{color:#8fc090;border-color:rgba(143,192,144,0.4);}
+    .badge-sold{color:#d09090;border-color:rgba(208,144,144,0.4);}
+    .badge-featured{color:var(--gold);}
+
+    /* Modal */
+    .modal-content{
+      background:var(--darkbrown);border:1px solid var(--gold);
+      color:var(--cream);border-radius:0;
+    }
+    .modal-header{border-bottom:1px solid var(--border-gold);padding:1.5rem 1.75rem;}
+    .modal-header h5{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--cream);}
+    .modal-body{padding:1.75rem;}
+    .modal-footer{border-top:1px solid var(--border-gold);padding:1rem 1.75rem;}
+    .btn-close{filter:invert(1) sepia(1) hue-rotate(15deg) opacity(0.6);}
+    .form-label{
+      font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;
+      color:var(--gold);margin-bottom:0.4rem;
+    }
+    .form-control,.form-select{
+      background:transparent;border:1px solid var(--border-gold);
+      color:var(--cream);border-radius:0;padding:0.65rem 1rem;font-size:0.85rem;
+    }
+    .form-control:focus,.form-select:focus{
+      background:transparent;color:var(--cream);
+      border-color:var(--gold);box-shadow:0 0 0 1px var(--gold);
+    }
+    .form-control::placeholder{color:rgba(243,232,208,0.35);}
+    .form-select option{background:var(--darkbrown);color:var(--cream);}
+    .form-check-input{background:transparent;border-color:var(--border-gold);}
+    .form-check-input:checked{background-color:var(--gold);border-color:var(--gold);}
+    .form-check-label{font-size:0.8rem;color:var(--parchment);}
+
+    /* Tabs */
+    .tab-content{display:none;}
+    .tab-content.active{display:block;}
+
+    /* Toast */
+    .toast-admin{
+      position:fixed;bottom:2rem;right:2rem;background:var(--charcoal);
+      border:1px solid var(--gold);padding:1rem 1.5rem;color:var(--cream);
+      font-size:0.85rem;z-index:9999;transform:translateY(200%);
+      transition:transform 0.4s ease;
+    }
+    .toast-admin.show{transform:translateY(0);}
+    .toast-admin i{color:var(--gold);margin-right:0.5rem;}
+
+    @media (max-width:991px){
+      .admin-layout{grid-template-columns:1fr;}
+      .sidebar{position:static;height:auto;padding:1.5rem;}
+      .sidebar-footer{position:static;margin-top:2rem;}
+      .main-content{padding:1.5rem;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="admin-layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      HERITAGE HEAVEN
+      <small>ADMIN PANEL</small>
+    </div>
+    <div class="divider"></div>
+
+    <div class="nav-item-admin active" data-tab="dashboard">
+      <i class="bi bi-grid-1x2"></i> Dashboard
+    </div>
+    <div class="nav-item-admin" data-tab="artifacts">
+      <i class="bi bi-box-seam"></i> Artifacts
+    </div>
+    <div class="nav-item-admin" data-tab="orders">
+      <i class="bi bi-bag-check"></i> Orders
+    </div>
+    <div class="nav-item-admin" data-tab="appointments">
+      <i class="bi bi-calendar-event"></i> Appointments
+    </div>
+    <div class="nav-item-admin" data-tab="users">
+      <i class="bi bi-people"></i> Users
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="user-chip">
+        <div class="avatar" id="userInitial">A</div>
+        <div>
+          <div id="userName" style="color:var(--cream);font-weight:500;">Admin</div>
+          <div style="font-size:0.7rem;opacity:0.6;" id="userEmail">admin@heritageheaven.in</div>
+        </div>
+      </div>
+      <button class="logout-btn" onclick="logout()">Sign Out</button>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- DASHBOARD TAB -->
+    <div class="tab-content active" id="tab-dashboard">
+      <h1 class="page-title">Dashboard</h1>
+      <p class="page-subtitle">AN OVERVIEW OF YOUR COLLECTION</p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="icon"><i class="bi bi-box-seam"></i></div>
+          <div class="num" id="statTotal">—</div>
+          <div class="label">Total Artifacts</div>
+        </div>
+        <div class="stat-card">
+          <div class="icon"><i class="bi bi-tag"></i></div>
+          <div class="num" id="statAvailable">—</div>
+          <div class="label">Available</div>
+        </div>
+        <div class="stat-card">
+          <div class="icon"><i class="bi bi-bag-check"></i></div>
+          <div class="num" id="statSold">—</div>
+          <div class="label">Sold</div>
+        </div>
+        <div class="stat-card">
+          <div class="icon"><i class="bi bi-star"></i></div>
+          <div class="num" id="statFeatured">—</div>
+          <div class="label">Featured</div>
+        </div>
+        <div class="stat-card">
+          <div class="icon"><i class="bi bi-calendar-event"></i></div>
+          <div class="num" id="statAppointments">—</div>
+          <div class="label">Appointments</div>
+        </div>
+        <div class="stat-card">
+          <div class="icon"><i class="bi bi-people"></i></div>
+          <div class="num" id="statUsers">—</div>
+          <div class="label">Users</div>
+        </div>
+      </div>
+
+      <h3 style="font-size:1.2rem;margin-bottom:1rem;color:var(--cream);">Recent Artifacts</h3>
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="recentArtifactsBody"></tbody>
+      </table>
+    </div>
+
+    <!-- ARTIFACTS TAB -->
+    <div class="tab-content" id="tab-artifacts">
+      <h1 class="page-title">Artifacts</h1>
+      <p class="page-subtitle">MANAGE YOUR COLLECTION</p>
+
+      <div class="toolbar">
+        <div class="search-box">
+          <i class="bi bi-search"></i>
+          <input type="text" id="artifactSearch" placeholder="Search artifacts...">
+        </div>
+        <button class="btn-admin-primary" onclick="openArtifactModal()">
+          <i class="bi bi-plus-lg me-2"></i>Add Artifact
+        </button>
+      </div>
+
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Period</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="artifactsBody">
+          <tr><td colspan="8" style="text-align:center;padding:2rem;opacity:0.6;">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ORDERS TAB -->
+    <div class="tab-content" id="tab-orders">
+      <h1 class="page-title">Orders</h1>
+      <p class="page-subtitle">PURCHASE HISTORY</p>
+
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>User</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Shipping</th>
+          </tr>
+        </thead>
+        <tbody id="ordersBody">
+          <tr><td colspan="6" style="text-align:center;padding:2rem;opacity:0.6;">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- APPOINTMENTS TAB -->
+    <div class="tab-content" id="tab-appointments">
+      <h1 class="page-title">Appointments</h1>
+      <p class="page-subtitle">PRIVATE VIEWING REQUESTS</p>
+
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Visitors</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="appointmentsBody">
+          <tr><td colspan="7" style="text-align:center;padding:2rem;opacity:0.6;">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- USERS TAB -->
+    <div class="tab-content" id="tab-users">
+      <h1 class="page-title">Users</h1>
+      <p class="page-subtitle">REGISTERED COLLECTORS</p>
+
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Role</th>
+            <th>Joined</th>
+          </tr>
+        </thead>
+        <tbody id="usersBody">
+          <tr><td colspan="6" style="text-align:center;padding:2rem;opacity:0.6;">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+</div>
+
+<!-- Artifact Modal -->
+<div class="modal fade" id="artifactModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="modalTitle">Add Artifact</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="artifactForm">
+          <input type="hidden" id="aId">
+          <div class="row g-3">
+            <div class="col-md-8">
+              <label class="form-label">Title *</label>
+              <input type="text" class="form-control" id="aTitle" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Category *</label>
+              <select class="form-select" id="aCategory" required>
+                <option value="">Select...</option>
+                <option>Furniture</option>
+                <option>Art & Paintings</option>
+                <option>Sculptures</option>
+                <option>Clocks</option>
+                <option>Ceramics</option>
+                <option>Collectibles</option>
+                <option>Decor</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Artist</label>
+              <input type="text" class="form-control" id="aArtist">
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Period</label>
+              <input type="text" class="form-control" id="aPeriod" placeholder="Late 19th Century">
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Year Created</label>
+              <input type="number" class="form-control" id="aYearCreated">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Origin</label>
+              <input type="text" class="form-control" id="aOrigin">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Material</label>
+              <input type="text" class="form-control" id="aMaterial">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Price (₹) *</label>
+              <input type="number" class="form-control" id="aPrice" step="0.01" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Dimensions</label>
+              <input type="text" class="form-control" id="aDimensions" placeholder="120 × 65 × 78 cm">
+            </div>
+            <div class="col-12">
+              <label class="form-label">Image URL</label>
+              <input type="text" class="form-control" id="aImageUrl" placeholder="https://...">
+            </div>
+            <div class="col-12">
+              <label class="form-label">Description</label>
+              <textarea class="form-control" id="aDescription" rows="3"></textarea>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Condition</label>
+              <input type="text" class="form-control" id="aCondition" placeholder="Professionally restored">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Provenance</label>
+              <input type="text" class="form-control" id="aProvenance">
+            </div>
+            <div class="col-md-6">
+              <div class="form-check mt-2">
+                <input class="form-check-input" type="checkbox" id="aIsForSale" checked>
+                <label class="form-check-label" for="aIsForSale">Available for Sale</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-check mt-2">
+                <input class="form-check-input" type="checkbox" id="aIsFeatured">
+                <label class="form-check-label" for="aIsFeatured">Featured</label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-admin-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn-admin-primary" onclick="saveArtifact()">Save Artifact</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast-admin"><i class="bi bi-check-circle"></i><span id="toastMsg">Saved</span></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const API = 'http://localhost:3000/api';
+const token = () => localStorage.getItem('hh_token');
+const currentUser = JSON.parse(localStorage.getItem('hh_user') || 'null');
+let artifactsCache = [];
+let modalInstance;
+
+// Auth guard
+if (!currentUser || currentUser.role !== 'Admin') {
+  alert('Admin access required. Please sign in.');
+  location.href = 'login.html';
+}
+
+// Fill user info
+document.getElementById('userInitial').textContent = (currentUser?.name || 'A')[0].toUpperCase();
+document.getElementById('userName').textContent = currentUser?.name || 'Admin';
+document.getElementById('userEmail').textContent = currentUser?.email || '';
+
+function logout() {
+  localStorage.removeItem('hh_token');
+  localStorage.removeItem('hh_user');
+  location.href = 'index.html';
+}
+
+function toast(msg) {
+  document.getElementById('toastMsg').textContent = msg;
+  const el = document.getElementById('toast');
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2500);
+}
+
+function authHeaders() {
+  return {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token()}`
+  };
+}
+
+// Tabs
+document.querySelectorAll('.nav-item-admin').forEach(el => {
+  el.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item-admin').forEach(x => x.classList.remove('active'));
+    el.classList.add('active');
+    const tab = el.dataset.tab;
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+
+    if (tab === 'artifacts') loadArtifacts();
+    if (tab === 'orders') loadOrders();
+    if (tab === 'appointments') loadAppointments();
+    if (tab === 'users') loadUsers();
+  });
+});
+
+// Dashboard stats
+async function loadStats() {
+  try {
+    const res = await fetch(`${API}/artifacts`);
+    const artifacts = await res.json();
+    artifactsCache = artifacts;
+
+    document.getElementById('statTotal').textContent = artifacts.length;
+    document.getElementById('statAvailable').textContent = artifacts.filter(a => a.isForSale).length;
+    document.getElementById('statSold').textContent = artifacts.filter(a => !a.isForSale).length;
+    document.getElementById('statFeatured').textContent = artifacts.filter(a => a.isFeatured).length;
+
+    // Recent 5
+    const recent = artifacts.slice(0, 5);
+    document.getElementById('recentArtifactsBody').innerHTML = recent.map(a => `
+      <tr>
+        <td><img src="${a.imageUrl}" class="thumb" alt=""></td>
+        <td>${a.title}</td>
+        <td>${a.category}</td>
+        <td>₹${a.price.toLocaleString('en-IN')}</td>
+        <td><span class="badge-pill ${a.isForSale ? 'badge-available' : 'badge-sold'}">${a.isForSale ? 'Available' : 'Sold'}</span></td>
+      </tr>
+    `).join('');
+  } catch (e) {
+    console.error(e);
+  }
+
+  try {
+    const resA = await fetch(`${API}/appointments`);
+    // Appointments endpoint might not exist for GET — silently handle
+  } catch (e) {}
+}
+
+// Artifacts table
+async function loadArtifacts() {
+  try {
+    const res = await fetch(`${API}/artifacts`);
+    artifactsCache = await res.json();
+    renderArtifacts(artifactsCache);
+  } catch (e) {
+    toast('Could not load artifacts');
+  }
+}
+
+function renderArtifacts(list) {
+  const tbody = document.getElementById('artifactsBody');
+  if (!list.length) {
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:2rem;opacity:0.6;">No artifacts found.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = list.map(a => `
+    <tr>
+      <td>${a.id}</td>
+      <td><img src="${a.imageUrl}" class="thumb" alt=""></td>
+      <td>${a.title}${a.isFeatured ? ' <span class="badge-pill badge-featured">★</span>' : ''}</td>
+      <td>${a.category}</td>
+      <td>${a.period || '—'}</td>
+      <td>₹${a.price.toLocaleString('en-IN')}</td>
+      <td><span class="badge-pill ${a.isForSale ? 'badge-available' : 'badge-sold'}">${a.isForSale ? 'Available' : 'Sold'}</span></td>
+      <td>
+        <button class="btn-admin-secondary" onclick="openArtifactModal(${a.id})">Edit</button>
+        <button class="btn-admin-danger" onclick="deleteArtifact(${a.id})">Delete</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+document.getElementById('artifactSearch')?.addEventListener('input', (e) => {
+  const q = e.target.value.toLowerCase();
+  renderArtifacts(artifactsCache.filter(a =>
+    a.title.toLowerCase().includes(q) ||
+    a.category.toLowerCase().includes(q)
+  ));
+});
+
+// Modal
+function openArtifactModal(id) {
+  const form = document.getElementById('artifactForm');
+  form.reset();
+  document.getElementById('aId').value = '';
+
+  if (id) {
+    const a = artifactsCache.find(x => x.id === id);
+    if (!a) return;
+    document.getElementById('modalTitle').textContent = 'Edit Artifact';
+    document.getElementById('aId').value = a.id;
+    document.getElementById('aTitle').value = a.title || '';
+    document.getElementById('aCategory').value = a.category || '';
+    document.getElementById('aArtist').value = a.artist || '';
+    document.getElementById('aPeriod').value = a.period || '';
+    document.getElementById('aYearCreated').value = a.yearCreated || '';
+    document.getElementById('aOrigin').value = a.origin || '';
+    document.getElementById('aMaterial').value = a.material || '';
+    document.getElementById('aPrice').value = a.price || '';
+    document.getElementById('aDimensions').value = a.dimensions || '';
+    document.getElementById('aImageUrl').value = a.imageUrl || '';
+    document.getElementById('aDescription').value = a.description || '';
+    document.getElementById('aCondition').value = a.condition || '';
+    document.getElementById('aProvenance').value = a.provenance || '';
+    document.getElementById('aIsForSale').checked = !!a.isForSale;
+    document.getElementById('aIsFeatured').checked = !!a.isFeatured;
+  } else {
+    document.getElementById('modalTitle').textContent = 'Add Artifact';
+    document.getElementById('aIsForSale').checked = true;
+    document.getElementById('aIsFeatured').checked = false;
+  }
+
+  modalInstance = new bootstrap.Modal(document.getElementById('artifactModal'));
+  modalInstance.show();
+}
+
+async function saveArtifact() {
+  const id = document.getElementById('aId').value;
+  const payload = {
+    title: document.getElementById('aTitle').value.trim(),
+    category: document.getElementById('aCategory').value,
+    artist: document.getElementById('aArtist').value.trim() || null,
+    period: document.getElementById('aPeriod').value.trim() || null,
+    yearCreated: parseInt(document.getElementById('aYearCreated').value) || null,
+    origin: document.getElementById('aOrigin').value.trim() || null,
+    material: document.getElementById('aMaterial').value.trim() || null,
+    price: parseFloat(document.getElementById('aPrice').value),
+    dimensions: document.getElementById('aDimensions').value.trim() || null,
+    imageUrl: document.getElementById('aImageUrl').value.trim() || null,
+    description: document.getElementById('aDescription').value.trim() || null,
+    condition: document.getElementById('aCondition').value.trim() || null,
+    provenance: document.getElementById('aProvenance').value.trim() || null,
+    isForSale: document.getElementById('aIsForSale').checked,
+    isFeatured: document.getElementById('aIsFeatured').checked
+  };
+
+  if (!payload.title || !payload.category || !payload.price) {
+    toast('Please fill all required fields');
+    return;
+  }
+
+  const url = id ? `${API}/artifacts/${id}` : `${API}/artifacts`;
+  const method = id ? 'PUT' : 'POST';
+
+  try {
+    const res = await fetch(url, {
+      method,
+      headers: authHeaders(),
+      body: JSON.stringify(payload)
+    });
+    if (res.ok) {
+      toast(id ? 'Artifact updated' : 'Artifact created');
+      modalInstance.hide();
+      loadArtifacts();
+      loadStats();
+    } else {
+      const err = await res.json();
+      toast(err.error || 'Save failed');
+    }
+  } catch (e) {
+    toast('Connection error');
+  }
+}
+
+async function deleteArtifact(id) {
+  if (!confirm('Delete this artifact permanently?')) return;
+  try {
+    const res = await fetch(`${API}/artifacts/${id}`, {
+      method: 'DELETE',
+      headers: authHeaders()
+    });
+    if (res.ok) {
+      toast('Artifact deleted');
+      loadArtifacts();
+      loadStats();
+    }
+  } catch (e) {
+    toast('Delete failed');
+  }
+}
+
+// Orders
+async function loadOrders() {
+  const tbody = document.getElementById('ordersBody');
+  try {
+    // NOTE: /api/orders returns current user's orders; for admin, you'd add a separate endpoint
+    // For demo, we show a placeholder if none.
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:2rem;opacity:0.6;">Admin order view — connect /api/admin/orders when ready.</td></tr>';
+  } catch (e) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:2rem;opacity:0.6;">Could not load orders.</td></tr>';
+  }
+}
+
+// Appointments
+async function loadAppointments() {
+  const tbody = document.getElementById('appointmentsBody');
+  try {
+    const res = await fetch(`${API}/appointments`);
+    const list = await res.json();
+    if (!Array.isArray(list) || !list.length) {
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:2rem;opacity:0.6;">No appointments yet.</td></tr>';
+      document.getElementById('statAppointments').textContent = '0';
+      return;
+    }
+    document.getElementById('statAppointments').textContent = list.length;
+    tbody.innerHTML = list.map(a => `
+      <tr>
+        <td>${a.id}</td>
+        <td>${a.name}</td>
+        <td>${a.email}</td>
+        <td>${a.date}</td>
+        <td>${a.time}</td>
+        <td>${a.visitors}</td>
+        <td><span class="badge-pill">${a.status || 'Pending'}</span></td>
+      </tr>
+    `).join('');
+  } catch (e) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:2rem;opacity:0.6;">Could not load appointments.</td></tr>';
+  }
+}
+
+// Users
+async function loadUsers() {
+  const tbody = document.getElementById('usersBody');
+  try {
+    const res = await fetch(`${API}/users`);
+    const list = await res.json();
+    if (!Array.isArray(list) || !list.length) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:2rem;opacity:0.6;">No users found.</td></tr>';
+      return;
+    }
+    document.getElementById('statUsers').textContent = list.length;
+    tbody.innerHTML = list.map(u => `
+      <tr>
+        <td>${u.id}</td>
+        <td>${u.name}</td>
+        <td>${u.email}</td>
+        <td>${u.phone || '—'}</td>
+        <td><span class="badge-pill ${u.role === 'Admin' ? 'badge-featured' : ''}">${u.role}</span></td>
+        <td>${u.createdDate ? new Date(u.createdDate).toLocaleDateString() : '—'}</td>
+      </tr>
+    `).join('');
+  } catch (e) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:2rem;opacity:0.6;">Could not load users.</td></tr>';
+  }
+}
+
+// Init
+loadStats();
+</script>
+</body>
+</html>

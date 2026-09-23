@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artifact | Heritage Heaven</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital@1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --walnut:#2B1B14;--darkbrown:#3A2418;--gold:#B08D57;--brass:#C6A15B;
+      --cream:#F3E8D0;--parchment:#E8D8B8;--charcoal:#171311;--burgundy:#5A2E2E;
+      --border-gold:rgba(176,141,87,0.4);
+    }
+    *{box-sizing:border-box;}
+    body{
+      background:var(--walnut);color:var(--cream);font-family:'Inter',sans-serif;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+    h1,h2,h3{font-family:'Playfair Display',serif;font-weight:400;letter-spacing:0.02em;}
+    a{color:var(--gold);text-decoration:none;}
+    a:hover{color:var(--brass);}
+
+    /* Navbar */
+    .navbar{
+      background:rgba(43,27,20,0.98);border-bottom:1px solid var(--border-gold);
+      padding:1rem 0;backdrop-filter:blur(8px);
+    }
+    .navbar-brand{
+      font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600;
+      color:var(--cream)!important;letter-spacing:0.08em;line-height:1.1;
+    }
+    .navbar-brand small{
+      display:block;font-family:'Inter',sans-serif;font-size:0.5rem;
+      letter-spacing:0.35em;color:var(--gold);font-weight:300;margin-top:2px;
+    }
+    .nav-icons .btn-link{color:var(--cream);font-size:1.1rem;transition:color 0.3s;}
+    .nav-icons .btn-link:hover{color:var(--gold);}
+    .btn-outline-gold{
+      border:1px solid var(--gold);color:var(--gold);background:transparent;
+      padding:0.5rem 1.5rem;font-size:0.65rem;letter-spacing:0.25em;
+      text-transform:uppercase;border-radius:0;transition:all 0.4s;
+    }
+    .btn-outline-gold:hover{background:var(--gold);color:var(--walnut);}
+    .btn-gold{
+      background:var(--gold);color:var(--walnut);border:1px solid var(--gold);
+      padding:0.85rem 2.5rem;font-size:0.7rem;letter-spacing:0.25em;
+      text-transform:uppercase;border-radius:0;font-weight:600;transition:all 0.4s;
+    }
+    .btn-gold:hover{background:transparent;color:var(--gold);}
+
+    /* Product layout */
+    .product-section{padding:9rem 0 4rem;}
+    .gallery-main{
+      border:1px solid var(--border-gold);background:var(--charcoal);
+      aspect-ratio:1/1;overflow:hidden;position:relative;
+    }
+    .gallery-main img{width:100%;height:100%;object-fit:cover;}
+    .gallery-thumbs{display:flex;gap:0.75rem;margin-top:0.75rem;}
+    .gallery-thumb{
+      flex:1;aspect-ratio:1/1;border:1px solid var(--border-gold);
+      overflow:hidden;cursor:pointer;opacity:0.6;transition:opacity 0.3s,border-color 0.3s;
+    }
+    .gallery-thumb:hover,.gallery-thumb.active{opacity:1;border-color:var(--gold);}
+    .gallery-thumb img{width:100%;height:100%;object-fit:cover;}
+
+    .badge-row{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;}
+    .badge-label{
+      font-size:0.55rem;letter-spacing:0.25em;text-transform:uppercase;
+      padding:0.35rem 0.85rem;border:1px solid var(--border-gold);
+      color:var(--gold);background:rgba(23,19,17,0.6);
+    }
+    .artifact-id{
+      font-size:0.6rem;letter-spacing:0.3em;color:var(--gold);
+      opacity:0.7;text-transform:uppercase;margin-bottom:1rem;
+    }
+    .product-title{
+      font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--cream);
+      line-height:1.2;margin-bottom:0.5rem;
+    }
+    .product-era{
+      font-family:'Cormorant Garamond',serif;font-style:italic;
+      font-size:1.2rem;color:var(--parchment);opacity:0.8;margin-bottom:1.5rem;
+    }
+    .product-price{
+      font-family:'Playfair Display',serif;font-size:2rem;
+      color:var(--gold);margin-bottom:2rem;
+    }
+    .spec-table{
+      width:100%;border-top:1px solid rgba(176,141,87,0.2);
+      border-bottom:1px solid rgba(176,141,87,0.2);padding:1rem 0;
+      margin-bottom:2rem;
+    }
+    .spec-row{
+      display:grid;grid-template-columns:140px 1fr;gap:1rem;
+      padding:0.6rem 0;border-bottom:1px solid rgba(176,141,87,0.1);
+    }
+    .spec-row:last-child{border-bottom:none;}
+    .spec-label{
+      font-size:0.6rem;letter-spacing:0.25em;color:var(--gold);
+      text-transform:uppercase;align-self:center;
+    }
+    .spec-value{color:var(--parchment);font-size:0.9rem;}
+    .description{
+      color:rgba(243,232,208,0.75);font-size:0.95rem;
+      line-height:1.7;margin-bottom:2rem;
+    }
+    .action-row{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;}
+    .service-links{
+      border-top:1px solid rgba(176,141,87,0.2);padding-top:1.5rem;
+      display:flex;flex-direction:column;gap:0.75rem;
+    }
+    .service-link{
+      font-size:0.75rem;letter-spacing:0.1em;color:var(--parchment);
+      display:flex;align-items:center;gap:0.75rem;cursor:pointer;
+      transition:color 0.3s ease,padding-left 0.3s ease;
+    }
+    .service-link i{color:var(--gold);font-size:1rem;}
+    .service-link:hover{color:var(--gold);padding-left:0.5rem;}
+
+    /* Related */
+    .related-section{padding:4rem 0 6rem;background:var(--darkbrown);}
+    .section-title{
+      font-size:clamp(1.5rem,3vw,2rem);color:var(--cream);
+      margin-bottom:2rem;text-align:center;
+    }
+    .ornament{
+      display:flex;align-items:center;justify-content:center;gap:1rem;
+      color:var(--gold);margin-bottom:3rem;
+    }
+    .ornament::before,.ornament::after{
+      content:'';width:60px;height:1px;
+      background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    }
+    .related-card{
+      background:var(--walnut);border:1px solid var(--border-gold);
+      transition:transform 0.4s ease,border-color 0.4s ease;
+      cursor:pointer;overflow:hidden;
+    }
+    .related-card:hover{border-color:var(--gold);transform:translateY(-5px);}
+    .related-card img{width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform 0.8s ease;}
+    .related-card:hover img{transform:scale(1.05);}
+    .related-card .card-body{padding:1.25rem;}
+    .related-card h5{font-family:'Playfair Display',serif;font-size:1rem;color:var(--cream);margin-bottom:0.25rem;}
+    .related-card .price{color:var(--gold);font-family:'Playfair Display',serif;font-size:1.1rem;margin-top:0.5rem;}
+
+    /* Footer */
+    footer{background:var(--charcoal);border-top:1px solid rgba(176,141,87,0.2);padding:3rem 0 1.5rem;text-align:center;}
+    footer p{font-size:0.75rem;color:rgba(243,232,208,0.5);margin:0;}
+
+    /* Toast */
+    .toast-custom{
+      position:fixed;bottom:2rem;right:2rem;background:var(--darkbrown);
+      border:1px solid var(--gold);padding:1rem 1.5rem;color:var(--cream);
+      font-size:0.85rem;z-index:9999;transform:translateY(200%);
+      transition:transform 0.4s ease;max-width:340px;
+    }
+    .toast-custom.show{transform:translateY(0);}
+    .toast-custom i{color:var(--gold);margin-right:0.5rem;}
+
+    .loading{
+      text-align:center;padding:6rem 0;color:var(--gold);
+      font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar fixed-top">
+  <div class="container d-flex align-items-center justify-content-between">
+    <a class="navbar-brand" href="index.html">
+      HERITAGE HEAVEN
+      <small>ANTIQUE & HERITAGE COLLECTIONS</small>
+    </a>
+    <div class="nav-icons d-flex align-items-center gap-3">
+      <a href="index.html#collection" class="btn-link" aria-label="Search"><i class="bi bi-search"></i></a>
+      <a href="wishlist.html" class="btn-link position-relative" aria-label="Wishlist">
+        <i class="bi bi-heart"></i>
+        <span id="wishCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+              style="background:var(--gold);color:var(--walnut);font-size:0.5rem;display:none;">0</span>
+      </a>
+      <a href="cart.html" class="btn-link position-relative" aria-label="Cart">
+        <i class="bi bi-bag"></i>
+        <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+              style="background:var(--gold);color:var(--walnut);font-size:0.5rem;display:none;">0</span>
+      </a>
+      <a href="login.html" id="authBtn" class="btn btn-outline-gold d-none d-md-inline-block">LOGIN</a>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<main id="content">
+  <div class="loading">Loading artifact...</div>
+</main>
+
+<!-- Toast -->
+<div id="toast" class="toast-custom">
+  <i class="bi bi-check-circle"></i><span id="toastMsg">Added to wishlist</span>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Heritage Heaven. All Rights Reserved. &nbsp;•&nbsp; <span style="color:var(--gold);">"Every piece has a story."</span></p>
+</footer>
+
+<script>
+const API = 'http://localhost:3000/api';
+const token = () => localStorage.getItem('hh_token');
+const currentUser = JSON.parse(localStorage.getItem('hh_user') || 'null');
+const params = new URLSearchParams(location.search);
+const artifactId = params.get('id');
+
+// Auth UI
+if (currentUser) {
+  const btn = document.getElementById('authBtn');
+  btn.textContent = currentUser.name.split(' ')[0].toUpperCase();
+  btn.href = '#';
+  btn.onclick = (e) => { e.preventDefault(); logout(); };
+}
+
+function logout() {
+  localStorage.removeItem('hh_token');
+  localStorage.removeItem('hh_user');
+  location.href = 'index.html';
+}
+
+function toast(msg) {
+  document.getElementById('toastMsg').textContent = msg;
+  const el = document.getElementById('toast');
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2500);
+}
+
+function updateCartBadge() {
+  const cart = JSON.parse(localStorage.getItem('hh_cart') || '[]');
+  const badge = document.getElementById('cartCount');
+  if (cart.length) { badge.textContent = cart.length; badge.style.display = ''; }
+}
+
+function updateWishBadge() {
+  if (!token()) return;
+  fetch(`${API}/wishlist`, { headers: { 'Authorization': `Bearer ${token()}` }})
+    .then(r => r.json())
+    .then(items => {
+      const badge = document.getElementById('wishCount');
+      if (items.length) { badge.textContent = items.length; badge.style.display = ''; }
+      else { badge.style.display = 'none'; }
+    });
+}
+
+async function loadArtifact() {
+  if (!artifactId) {
+    document.getElementById('content').innerHTML =
+      `<div class="loading">No artifact specified. <a href="index.html">Return to gallery</a>.</div>`;
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API}/artifacts/${artifactId}`);
+    if (!res.ok) throw new Error('Not found');
+    const a = await res.json();
+    renderProduct(a);
+    loadRelated(a.category, a.id);
+  } catch (e) {
+    document.getElementById('content').innerHTML =
+      `<div class="loading">Artifact not found. <a href="index.html">Return to gallery</a>.</div>`;
+  }
+}
+
+function renderProduct(a) {
+  const id = `HH-${a.yearCreated || 'X'}-${String(a.id).padStart(3, '0')}`;
+  const imageUrls = [
+    a.imageUrl,
+    a.imageUrl,
+    a.imageUrl,
+    a.imageUrl
+  ];
+
+  document.getElementById('content').innerHTML = `
+  <section class="product-section">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-6">
+          <div class="gallery-main">
+            <img id="mainImage" src="${a.imageUrl}" alt="${a.title}">
+          </div>
+          <div class="gallery-thumbs">
+            ${imageUrls.map((url, i) => `
+              <div class="gallery-thumb ${i === 0 ? 'active' : ''}" data-src="${url}">
+                <img src="${url}" alt="${a.title} view ${i+1}">
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="artifact-id">ARTIFACT No. ${id}</div>
+          <div class="badge-row">
+            <span class="badge-label">${a.isForSale ? 'Available' : 'Sold'}</span>
+            <span class="badge-label">Authenticated</span>
+            <span class="badge-label">One of One</span>
+          </div>
+          <h1 class="product-title">${a.title}</h1>
+          <p class="product-era">${a.period || ''}${a.origin ? ' • ' + a.origin : ''}</p>
+          <div class="product-price">₹${a.price.toLocaleString('en-IN')}</div>
+
+          <div class="spec-table">
+            ${a.period    ? specRow('Period', a.period) : ''}
+            ${a.origin    ? specRow('Origin', a.origin) : ''}
+            ${a.yearCreated ? specRow('Year', a.yearCreated) : ''}
+            ${a.material  ? specRow('Material', a.material) : ''}
+            ${a.dimensions? specRow('Dimensions', a.dimensions) : ''}
+            ${a.condition ? specRow('Condition', a.condition) : ''}
+            ${a.artist    ? specRow('Artist', a.artist) : ''}
+            ${a.provenance? specRow('Provenance', a.provenance) : ''}
+          </div>
+
+          ${a.description ? `<p class="description">${a.description}</p>` : ''}
+
+          <div class="action-row">
+            <button class="btn btn-gold" onclick="addToCart(${a.id}, '${escapeQuotes(a.title)}', ${a.price}, '${a.imageUrl}', '${a.category}', '${a.period || ''}')">
+              Add to Cart
+            </button>
+            <button class="btn btn-outline-gold" onclick="addToWishlist(${a.id}, this)">
+              <i class="bi bi-heart me-1"></i> Add to Wishlist
+            </button>
+          </div>
+
+          <div class="service-links">
+            <div class="service-link" onclick="enquire(${a.id}, 'certificate')">
+              <i class="bi bi-file-earmark-text"></i> Request Certificate of Authenticity
+            </div>
+            <div class="service-link" onclick="enquire(${a.id}, 'expert')">
+              <i class="bi bi-person-badge"></i> Ask an Expert
+            </div>
+            <div class="service-link" onclick="enquire(${a.id}, 'photos')">
+              <i class="bi bi-camera"></i> Request Additional Photos
+            </div>
+            <div class="service-link" onclick="enquire(${a.id}, 'shipping')">
+              <i class="bi bi-truck"></i> Ask for Shipping Information
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="related-section" id="relatedSection">
+    <div class="container">
+      <h2 class="section-title">You May Also Admire</h2>
+      <div class="ornament"><i class="bi bi-diamond"></i></div>
+      <div class="row g-4" id="relatedGrid"></div>
+    </div>
+  </section>`;
+
+  // Thumbnail switcher
+  document.querySelectorAll('.gallery-thumb').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.gallery-thumb').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      document.getElementById('mainImage').src = t.dataset.src;
+    });
+  });
+}
+
+function specRow(label, value) {
+  return `<div class="spec-row"><div class="spec-label">${label}</div><div class="spec-value">${value}</div></div>`;
+}
+
+function escapeQuotes(s) { return s.replace(/'/g, "\\'"); }
+
+async function loadRelated(category, excludeId) {
+  const res = await fetch(`${API}/artifacts?category=${encodeURIComponent(category)}`);
+  const items = (await res.json()).filter(x => x.id !== excludeId).slice(0, 4);
+  const grid = document.getElementById('relatedGrid');
+  if (!grid) return;
+  if (!items.length) { document.getElementById('relatedSection').style.display = 'none'; return; }
+
+  grid.innerHTML = items.map(a => `
+    <div class="col-md-6 col-lg-3">
+      <div class="related-card" onclick="location.href='product.html?id=${a.id}'">
+        <img src="${a.imageUrl}" alt="${a.title}">
+        <div class="card-body">
+          <div style="font-size:0.6rem;letter-spacing:0.25em;color:var(--gold);text-transform:uppercase;margin-bottom:0.5rem;">${a.category}</div>
+          <h5>${a.title}</h5>
+          <div style="font-size:0.75rem;color:var(--parchment);opacity:0.7;">${a.period || ''}</div>
+          <div class="price">₹${a.price.toLocaleString('en-IN')}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Cart
+function addToCart(id, title, price, imageUrl, category, period) {
+  const cart = JSON.parse(localStorage.getItem('hh_cart') || '[]');
+  if (cart.find(i => i.artifactId === id)) {
+    toast('Already in your cart');
+    return;
+  }
+  cart.push({ artifactId: id, title, price, imageUrl, category, period, quantity: 1 });
+  localStorage.setItem('hh_cart', JSON.stringify(cart));
+  updateCartBadge();
+  toast('Added to cart');
+}
+
+// Wishlist
+async function addToWishlist(artifactId, btn) {
+  if (!currentUser) {
+    if (confirm('Please sign in to save this artifact. Go to login?'))
+      location.href = 'login.html';
+    return;
+  }
+  const res = await fetch(`${API}/wishlist/${artifactId}`, {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${token()}` }
+  });
+  if (res.ok) {
+    btn.innerHTML = '<i class="bi bi-heart-fill me-1"></i> In Wishlist';
+    btn.style.color = 'var(--gold)';
+    updateWishBadge();
+    toast('Saved to wishlist');
+  }
+}
+
+// Enquiries
+async function enquire(artifactId, type) {
+  const messages = {
+    certificate: 'Request a Certificate of Authenticity',
+    expert: 'Speak to an expert about this artifact',
+    photos: 'Request additional photographs',
+    shipping: 'Ask about shipping information'
+  };
+  const msg = prompt(`Your message (${messages[type]}):`);
+  if (!msg) return;
+
+  const name = currentUser?.name || prompt('Your name:');
+  const email = currentUser?.email || prompt('Your email:');
+  if (!name || !email) return;
+
+  const res = await fetch(`${API}/appointments`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name, email, date: new Date().toISOString().slice(0,10),
+      time: '12:00', visitors: 1,
+      message: `[Artifact #${artifactId}] [${type}] ${msg}`
+    })
+  });
+  if (res.ok) toast('Your enquiry has been received');
+  else toast('Could not send enquiry');
+}
+
+// Init
+loadArtifact();
+updateCartBadge();
+updateWishBadge();
+</script>
+</body>
+</html>

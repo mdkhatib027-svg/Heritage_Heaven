@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wishlist | Heritage Heaven</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital@1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --walnut:#2B1B14;--darkbrown:#3A2418;--gold:#B08D57;--brass:#C6A15B;
+      --cream:#F3E8D0;--parchment:#E8D8B8;--charcoal:#171311;
+      --border-gold:rgba(176,141,87,0.4);
+    }
+    *{box-sizing:border-box;}
+    body{
+      background:var(--walnut);color:var(--cream);font-family:'Inter',sans-serif;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+    h1,h2,h3{font-family:'Playfair Display',serif;font-weight:400;letter-spacing:0.02em;}
+    a{color:var(--gold);text-decoration:none;}
+    a:hover{color:var(--brass);}
+    .navbar{
+      background:rgba(43,27,20,0.98);border-bottom:1px solid var(--border-gold);
+      padding:1rem 0;backdrop-filter:blur(8px);
+    }
+    .navbar-brand{
+      font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600;
+      color:var(--cream)!important;letter-spacing:0.08em;line-height:1.1;
+    }
+    .navbar-brand small{
+      display:block;font-family:'Inter',sans-serif;font-size:0.5rem;
+      letter-spacing:0.35em;color:var(--gold);font-weight:300;margin-top:2px;
+    }
+    .nav-icons .btn-link{color:var(--cream);font-size:1.1rem;transition:color 0.3s;}
+    .nav-icons .btn-link:hover{color:var(--gold);}
+    .btn-outline-gold{
+      border:1px solid var(--gold);color:var(--gold);background:transparent;
+      padding:0.55rem 1.5rem;font-size:0.65rem;letter-spacing:0.25em;
+      text-transform:uppercase;border-radius:0;transition:all 0.4s;
+    }
+    .btn-outline-gold:hover{background:var(--gold);color:var(--walnut);}
+    .page-header{
+      padding:9rem 0 3rem;text-align:center;
+    }
+    .page-header h1{font-size:clamp(2rem,4vw,3rem);margin-bottom:0.5rem;}
+    .page-header .sub{
+      font-family:'Cormorant Garamond',serif;font-style:italic;
+      color:var(--gold);font-size:1.2rem;
+    }
+    .ornament{
+      display:flex;align-items:center;justify-content:center;gap:1rem;
+      color:var(--gold);margin:2rem 0;
+    }
+    .ornament::before,.ornament::after{
+      content:'';width:60px;height:1px;
+      background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    }
+    .wishlist-section{padding:2rem 0 6rem;}
+    .wish-card{
+      background:var(--darkbrown);border:1px solid var(--border-gold);
+      overflow:hidden;display:grid;grid-template-columns:220px 1fr;
+      transition:border-color 0.4s ease;margin-bottom:1.5rem;
+    }
+    .wish-card:hover{border-color:var(--gold);}
+    .wish-card img{width:100%;height:100%;object-fit:cover;}
+    .wish-body{padding:1.75rem;display:flex;flex-direction:column;}
+    .wish-cat{
+      font-size:0.6rem;letter-spacing:0.3em;color:var(--gold);
+      text-transform:uppercase;margin-bottom:0.5rem;
+    }
+    .wish-title{
+      font-family:'Playfair Display',serif;font-size:1.35rem;
+      color:var(--cream);margin-bottom:0.35rem;
+    }
+    .wish-era{font-size:0.85rem;color:var(--parchment);opacity:0.7;margin-bottom:1rem;}
+    .wish-price{
+      font-family:'Playfair Display',serif;font-size:1.4rem;
+      color:var(--gold);margin-bottom:1rem;
+    }
+    .wish-actions{
+      display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:auto;
+    }
+    .btn-sm-custom{
+      font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;
+      padding:0.6rem 1.25rem;border-radius:0;transition:all 0.3s ease;
+      cursor:pointer;border:1px solid var(--border-gold);background:transparent;
+      color:var(--parchment);
+    }
+    .btn-sm-custom:hover{border-color:var(--gold);color:var(--gold);}
+    .btn-sm-gold{
+      background:var(--gold);color:var(--walnut);border:1px solid var(--gold);
+    }
+    .btn-sm-gold:hover{background:transparent;color:var(--gold);}
+    .empty-state{
+      text-align:center;padding:6rem 2rem;color:var(--parchment);
+      font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;
+    }
+    .empty-state i{font-size:3rem;color:var(--gold);opacity:0.5;display:block;margin-bottom:1.5rem;}
+    .empty-state .btn-outline-gold{margin-top:2rem;font-family:'Inter',sans-serif;font-style:normal;}
+    footer{background:var(--charcoal);border-top:1px solid rgba(176,141,87,0.2);padding:3rem 0 1.5rem;text-align:center;}
+    footer p{font-size:0.75rem;color:rgba(243,232,208,0.5);margin:0;}
+    .toast-custom{
+      position:fixed;bottom:2rem;right:2rem;background:var(--darkbrown);
+      border:1px solid var(--gold);padding:1rem 1.5rem;color:var(--cream);
+      font-size:0.85rem;z-index:9999;transform:translateY(200%);
+      transition:transform 0.4s ease;
+    }
+    .toast-custom.show{transform:translateY(0);}
+    .toast-custom i{color:var(--gold);margin-right:0.5rem;}
+    @media (max-width:768px){
+      .wish-card{grid-template-columns:1fr;}
+      .wish-card img{height:220px;}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar fixed-top">
+  <div class="container d-flex align-items-center justify-content-between">
+    <a class="navbar-brand" href="index.html">
+      HERITAGE HEAVEN
+      <small>ANTIQUE & HERITAGE COLLECTIONS</small>
+    </a>
+    <div class="nav-icons d-flex align-items-center gap-3">
+      <a href="index.html" class="btn-link" aria-label="Home"><i class="bi bi-house"></i></a>
+      <a href="cart.html" class="btn-link position-relative" aria-label="Cart">
+        <i class="bi bi-bag"></i>
+        <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+              style="background:var(--gold);color:var(--walnut);font-size:0.5rem;display:none;">0</span>
+      </a>
+      <a href="login.html" id="authBtn" class="btn btn-outline-gold d-none d-md-inline-block">LOGIN</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <h1>Your Wishlist</h1>
+    <p class="sub">"Your collection of timeless pieces."</p>
+    <div class="ornament"><i class="bi bi-diamond"></i></div>
+  </div>
+</header>
+
+<section class="wishlist-section">
+  <div class="container" id="wishlistContainer">
+    <div class="empty-state">Loading your saved artifacts...</div>
+  </div>
+</section>
+
+<div id="toast" class="toast-custom"><i class="bi bi-check-circle"></i><span id="toastMsg">Removed</span></div>
+
+<footer>
+  <p>© 2026 Heritage Heaven. All Rights Reserved. &nbsp;•&nbsp; <span style="color:var(--gold);">"Every piece has a story."</span></p>
+</footer>
+
+<script>
+const API = 'http://localhost:3000/api';
+const token = () => localStorage.getItem('hh_token');
+const currentUser = JSON.parse(localStorage.getItem('hh_user') || 'null');
+
+if (currentUser) {
+  const btn = document.getElementById('authBtn');
+  btn.textContent = currentUser.name.split(' ')[0].toUpperCase();
+  btn.href = '#';
+  btn.onclick = (e) => { e.preventDefault(); logout(); };
+}
+
+function logout() {
+  localStorage.removeItem('hh_token');
+  localStorage.removeItem('hh_user');
+  location.href = 'index.html';
+}
+
+function toast(msg) {
+  document.getElementById('toastMsg').textContent = msg;
+  const el = document.getElementById('toast');
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2200);
+}
+
+function updateCartBadge() {
+  const cart = JSON.parse(localStorage.getItem('hh_cart') || '[]');
+  const badge = document.getElementById('cartCount');
+  if (cart.length) { badge.textContent = cart.length; badge.style.display = ''; }
+}
+
+async function loadWishlist() {
+  const container = document.getElementById('wishlistContainer');
+
+  if (!currentUser) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <i class="bi bi-heart"></i>
+        Please sign in to view your wishlist.
+        <div><a href="login.html" class="btn btn-outline-gold">Sign In</a></div>
+      </div>`;
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API}/wishlist`, {
+      headers: { 'Authorization': `Bearer ${token()}` }
+    });
+    const items = await res.json();
+
+    if (!items.length) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <i class="bi bi-heart"></i>
+          Your wishlist is empty.<br>Save artifacts that speak to you.
+          <div><a href="index.html#featured" class="btn btn-outline-gold">Explore Collection</a></div>
+        </div>`;
+      return;
+    }
+
+    container.innerHTML = items.map(a => `
+      <div class="wish-card" data-id="${a.artifactId}">
+        <img src="${a.imageUrl}" alt="${a.title}">
+        <div class="wish-body">
+          <div class="wish-cat">${a.category || 'Artifact'}</div>
+          <h3 class="wish-title">${a.title}</h3>
+          <div class="wish-era">${a.period || ''}</div>
+          <div class="wish-price">₹${a.price.toLocaleString('en-IN')}</div>
+          <div style="font-size:0.7rem;letter-spacing:0.2em;color:${a.isForSale ? 'var(--gold)' : '#a06060'};text-transform:uppercase;margin-bottom:1rem;">
+            ${a.isForSale ? '● Available' : '● Sold'}
+          </div>
+          <div class="wish-actions">
+            <a href="product.html?id=${a.artifactId}" class="btn-sm-custom btn-sm-gold">View</a>
+            <button class="btn-sm-custom" onclick="addToCart(${a.artifactId}, '${escapeQuotes(a.title)}', ${a.price}, '${a.imageUrl}', '${a.category || ''}', '${a.period || ''}')">Add to Cart</button>
+            <button class="btn-sm-custom" onclick="enquire(${a.artifactId})">Enquire</button>
+            <button class="btn-sm-custom" style="color:#c08080;" onclick="remove(${a.artifactId})">Remove</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  } catch (e) {
+    container.innerHTML = `<div class="empty-state">Could not load wishlist. Please try again.</div>`;
+  }
+}
+
+function escapeQuotes(s) { return s.replace(/'/g, "\\'"); }
+
+async function remove(artifactId) {
+  if (!confirm('Remove this artifact from your wishlist?')) return;
+  const res = await fetch(`${API}/wishlist/${artifactId}`, {
+    method: 'DELETE',
+    headers: { 'Authorization': `Bearer ${token()}` }
+  });
+  if (res.ok) { toast('Removed from wishlist'); loadWishlist(); }
+}
+
+function addToCart(id, title, price, imageUrl, category, period) {
+  const cart = JSON.parse(localStorage.getItem('hh_cart') || '[]');
+  if (cart.find(i => i.artifactId === id)) { toast('Already in cart'); return; }
+  cart.push({ artifactId: id, title, price, imageUrl, category, period, quantity: 1 });
+  localStorage.setItem('hh_cart', JSON.stringify(cart));
+  updateCartBadge();
+  toast('Added to cart');
+}
+
+async function enquire(artifactId) {
+  const msg = prompt('Your enquiry about this artifact:');
+  if (!msg) return;
+  const res = await fetch(`${API}/appointments`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: currentUser.name, email: currentUser.email,
+      date: new Date().toISOString().slice(0,10),
+      time: '12:00', visitors: 1,
+      message: `[Artifact #${artifactId}] ${msg}`
+    })
+  });
+  if (res.ok) toast('Your enquiry has been received');
+}
+
+loadWishlist();
+updateCartBadge();
+</script>
+</body>
+</html>

@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heritage Heaven | Antique Furniture, Art & Heritage Collections</title>
+  <meta name="description" content="Discover rare antiques, heritage furniture, vintage art, collectibles and timeless treasures at Heritage Heaven. Explore authenticated pieces with stories worth preserving.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Heritage Heaven | Where Every Piece Has a Story">
+  <meta property="og:description" content="Curated antiques, museum-quality artifacts and timeless treasures.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&h=630&fit=crop">
+  <meta property="og:type" content="website">
+  <!-- Bootstrap 5.3 + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:wght@300..600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --walnut: #2B1B14;
+      --darkbrown: #3A2418;
+      --gold: #B08D57;
+      --brass: #C6A15B;
+      --cream: #F3E8D0;
+      --parchment: #E8D8B8;
+      --charcoal: #171311;
+      --burgundy: #5A2E2E;
+      --border-gold: rgba(176, 141, 87, 0.4);
+      --shadow-deep: 0 20px 40px -15px rgba(0,0,0,0.7);
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      font-family: 'Inter', sans-serif;
+      background-color: var(--walnut);
+      color: var(--cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+    h1,h2,h3,h4,h5,h6,.display-1,.display-2,.display-3{
+      font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+    .serif{font-family: 'Playfair Display', serif;}
+    .cormorant{font-family: 'Cormorant Garamond', serif;}
+    .small-caps{
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: var(--gold);
+    }
+    .gold{color: var(--gold);}
+    .bg-walnut{background-color: var(--walnut);}
+    .bg-darkbrown{background-color: var(--darkbrown);}
+    .bg-charcoal{background-color: var(--charcoal);}
+    .bg-burgundy{background-color: var(--burgundy);}
+    .text-cream{color: var(--cream);}
+    .text-parchment{color: var(--parchment);}
+    .border-gold{border-color: var(--border-gold)!important;}
+    .btn-outline-gold{
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+      padding: 0.75rem 2.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      border-radius: 0;
+      transition: all 0.4s ease;
+      font-weight: 500;
+    }
+    .btn-outline-gold:hover{
+      background: var(--gold);
+      color: var(--walnut);
+      border-color: var(--gold);
+    }
+    .btn-gold{
+      background: var(--gold);
+      color: var(--walnut);
+      border: 1px solid var(--gold);
+      padding: 0.75rem 2.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      border-radius: 0;
+      transition: all 0.4s ease;
+      font-weight: 600;
+    }
+    .btn-gold:hover{
+      background: transparent;
+      color: var(--gold);
+    }
+    .ornament-divider{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: var(--gold);
+    }
+    .ornament-divider::before,
+    .ornament-divider::after{
+      content: '';
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .ornament-divider i{
+      font-size: 1.2rem;
+      opacity: 0.7;
+    }
+    /* Navbar */
+    .navbar{
+      transition: all 0.5s ease;
+      background: transparent;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid transparent;
+    }
+    .navbar.scrolled{
+      background: rgba(43, 27, 20, 0.98);
+      border-bottom: 1px solid var(--border-gold);
+      padding: 0.8rem 0;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.6);
+    }
+    .navbar-brand{
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--cream)!important;
+      letter-spacing: 0.08em;
+      line-height: 1.1;
+    }
+    .navbar-brand small{
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      font-weight: 300;
+      margin-top: 2px;
+    }
+    .nav-link{
+      color: var(--cream)!important;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 400;
+      padding: 0.5rem 1rem!important;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after{width: 60%;}
+    .nav-link:hover{color: var(--gold)!important;}
+    .nav-icons .btn-link{
+      color: var(--cream);
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+      text-decoration: none;
+      padding: 0.25rem;
+    }
+    .nav-icons .btn-link:hover{color: var(--gold);}
+    .hamburger{
+      color: var(--cream);
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+    }
+    /* Hero */
+    .hero{
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg{
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      will-change: transform;
+      transform: scale(1.1);
+    }
+    .hero-overlay{
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(23,19,17,0.7) 0%, rgba(43,27,20,0.85) 70%, var(--walnut) 100%);
+    }
+    .hero-content{
+      position: relative;
+      z-index: 3;
+      max-width: 900px;
+      padding: 0 1.5rem;
+    }
+    .hero h1{
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+    }
+    .hero .subhead{
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      font-style: italic;
+      color: var(--parchment);
+      margin-bottom: 1.5rem;
+    }
+    .hero p{
+      color: rgba(243,232,208,0.8);
+      font-size: 1rem;
+      max-width: 650px;
+      margin: 0 auto 2rem;
+      font-weight: 300;
+    }
+    .hero-label{
+      margin-top: 2rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      opacity: 0.9;
+    }
+    /* Dust particles */
+    .dust{
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .dust span{
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: floatDust 12s infinite linear;
+    }
+    @keyframes floatDust{
+      0%{transform: translateY(0) translateX(0); opacity: 0;}
+      10%{opacity: 0.5;}
+      90%{opacity: 0.5;}
+      100%{transform: translateY(-100vh) translateX(50px); opacity: 0;}
+    }
+    /* Sections */
+    section{
+      position: relative;
+      padding: 6rem 0;
+    }
+    .section-label{
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    .section-title{
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    .section-sub{
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--parchment);
+      opacity: 0.9;
+    }
+    /* Introduction */
+    .intro-quote{
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--cream);
+      line-height: 1.3;
+    }
+    /* Collection Grid */
+    .collection-card{
+      position: relative;
+      overflow: hidden;
+      border: 1px solid transparent;
+      transition: border-color 0.4s ease, transform 0.4s ease;
+      cursor: pointer;
+      background: var(--darkbrown);
+      height: 100%;
+    }
+    .collection-card:hover{
+      border-color: var(--gold);
+      transform: translateY(-6px);
+    }
+    .collection-card .img-wrap{
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .collection-card img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .collection-card:hover img{
+      transform: scale(1.08);
+    }
+    .collection-card .card-body{
+      padding: 1.5rem;
+      background: linear-gradient(to top, var(--darkbrown), rgba(58,36,24,0.9));
+      position: relative;
+    }
+    .collection-number{
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      opacity: 0.3;
+      line-height: 1;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .collection-title{
+      font-size: 1.2rem;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+    .collection-link{
+      color: var(--gold);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: letter-spacing 0.3s ease;
+    }
+    .collection-link:hover{letter-spacing: 0.35em; color: var(--brass);}
+    /* Featured Artifacts */
+    .artifact-card{
+      background: var(--darkbrown);
+      border: 1px solid rgba(176,141,87,0.15);
+      transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .artifact-card:hover{
+      border-color: var(--gold);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-deep);
+    }
+    .artifact-card .img-wrap{
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1/1;
+      background: var(--charcoal);
+    }
+    .artifact-card img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+    .artifact-card:hover img{
+      transform: scale(1.06);
+    }
+    .artifact-overlay{
+      position: absolute;
+      inset: 0;
+      background: rgba(23,19,17,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .artifact-card:hover .artifact-overlay{
+      opacity: 1;
+    }
+    .artifact-overlay .btn{
+      font-size: 0.65rem;
+      padding: 0.6rem 1.5rem;
+    }
+    .artifact-badge{
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(23,19,17,0.85);
+      color: var(--gold);
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      padding: 0.35rem 0.8rem;
+      border: 1px solid var(--border-gold);
+      text-transform: uppercase;
+      z-index: 2;
+    }
+    .artifact-card .card-body{
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .artifact-category{
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .artifact-title{
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-bottom: 0.25rem;
+      line-height: 1.3;
+    }
+    .artifact-era{
+      font-size: 0.75rem;
+      color: var(--parchment);
+      opacity: 0.7;
+      margin-bottom: 0.75rem;
+    }
+    .artifact-price{
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .artifact-actions{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      border-top: 1px solid rgba(176,141,87,0.15);
+      padding-top: 1rem;
+    }
+    .artifact-actions .view-link{
+      color: var(--parchment);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .artifact-actions .view-link:hover{color: var(--gold);}
+    .wishlist-btn{
+      background: none;
+      border: none;
+      color: var(--parchment);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+    .wishlist-btn:hover, .wishlist-btn.active{color: var(--gold);}
+    /* Authenticity */
+    .auth-card{
+      background: rgba(243,232,208,0.04);
+      border: 1px solid rgba(176,141,87,0.2);
+      padding: 2rem;
+      height: 100%;
+      transition: border-color 0.4s ease, background 0.4s ease;
+    }
+    .auth-card:hover{
+      border-color: var(--gold);
+      background: rgba(243,232,208,0.07);
+    }
+    .auth-card i{
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .auth-card h5{
+      font-family: 'Playfair Display', serif;
+      color: var(--cream);
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+    .auth-card p{
+      color: rgba(243,232,208,0.7);
+      font-size: 0.9rem;
+    }
+    /* Stats */
+    .stat-number{
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label{
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--parchment);
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+      opacity: 0.8;
+    }
+    /* Restoration */
+    .step-number{
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--gold);
+      opacity: 0.3;
+      line-height: 1;
+    }
+    /* Artifact of month */
+    .artifact-month{
+      position: relative;
+      overflow: hidden;
+      min-height: 500px;
+    }
+    .artifact-month img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+    .artifact-month-content{
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(90deg, rgba(23,19,17,0.95) 0%, rgba(23,19,17,0.6) 60%, transparent 100%);
+      padding: 4rem 3rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    /* Journal */
+    .journal-card{
+      background: var(--darkbrown);
+      border: 1px solid rgba(176,141,87,0.15);
+      transition: border-color 0.4s ease, transform 0.4s ease;
+      height: 100%;
+    }
+    .journal-card:hover{
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+    .journal-card img{
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+    }
+    .journal-card .card-body{padding: 1.5rem;}
+    .journal-meta{
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .journal-title{
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .journal-desc{
+      font-size: 0.85rem;
+      color: rgba(243,232,208,0.7);
+      margin-bottom: 1rem;
+    }
+    .read-link{
+      color: var(--gold);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: letter-spacing 0.3s ease;
+    }
+    .read-link:hover{letter-spacing: 0.35em; color: var(--brass);}
+    /* Testimonials */
+    .testimonial{
+      background: rgba(243,232,208,0.04);
+      border-left: 2px solid var(--gold);
+      padding: 2rem;
+      height: 100%;
+    }
+    .testimonial p{
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--parchment);
+      line-height: 1.6;
+    }
+    .testimonial .author{
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 1.5rem;
+      font-style: normal;
+    }
+    /* Newsletter */
+    .newsletter-input{
+      background: transparent;
+      border: 1px solid rgba(176,141,87,0.4);
+      color: var(--cream);
+      padding: 0.9rem 1.25rem;
+      border-radius: 0;
+      font-size: 0.9rem;
+    }
+    .newsletter-input::placeholder{color: rgba(243,232,208,0.5);}
+    .newsletter-input:focus{
+      background: transparent;
+      border-color: var(--gold);
+      color: var(--cream);
+      box-shadow: none;
+    }
+    /* Footer */
+    footer{
+      background: var(--charcoal);
+      border-top: 1px solid rgba(176,141,87,0.2);
+      padding: 4rem 0 2rem;
+    }
+    footer h6{
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    footer a{
+      color: rgba(243,232,208,0.7);
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: block;
+      margin-bottom: 0.6rem;
+      transition: color 0.3s ease, padding-left 0.3s ease;
+    }
+    footer a:hover{
+      color: var(--gold);
+      padding-left: 5px;
+    }
+    /* Responsive */
+    @media (max-width: 991px){
+      .navbar-collapse{
+        background: var(--walnut);
+        padding: 1.5rem;
+        border: 1px solid var(--border-gold);
+        margin-top: 1rem;
+      }
+      .hero{min-height: 600px;}
+      section{padding: 4rem 0;}
+      .artifact-month-content{padding: 2rem;}
+    }
+    @media (max-width: 576px){
+      .hero h1{font-size: 2.5rem;}
+      section{padding: 3rem 0;}
+      .artifact-month-content{padding: 1.5rem;}
+    }
+    /* Fade in animation */
+    .fade-up{
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-up.visible{
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Image reveal */
+    .reveal-img{
+      opacity: 0;
+      transform: scale(1.05);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .reveal-img.visible{
+      opacity: 1;
+      transform: scale(1);
+    }
+    /* Scrollbar */
+    ::-webkit-scrollbar{width: 8px;}
+    ::-webkit-scrollbar-track{background: var(--charcoal);}
+    ::-webkit-scrollbar-thumb{background: var(--gold); border-radius: 0;}
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      HERITAGE HEAVEN
+      <small>ANTIQUE & HERITAGE COLLECTIONS</small>
+    </a>
+    <button class="hamburger d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle navigation">
+      <i class="bi bi-list"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#collection">Collection</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#story">Our Story</a></li>
+        <li class="nav-item"><a class="nav-link" href="#restoration">Restoration</a></li>
+        <li class="nav-item"><a class="nav-link" href="#journal">Journal</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-icons d-flex align-items-center gap-3 mt-3 mt-lg-0">
+        <button class="btn-link" aria-label="Search"><i class="bi bi-search"></i></button>
+        <button class="btn-link" aria-label="Wishlist"><i class="bi bi-heart"></i></button>
+        <button class="btn-link position-relative" aria-label="Cart">
+          <i class="bi bi-bag"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" style="background: var(--gold); color: var(--walnut); font-size: 0.5rem;">2</span>
+        </button>
+        <a href="#" class="btn btn-outline-gold btn-sm d-none d-lg-inline-block" style="padding: 0.5rem 1.5rem; font-size: 0.65rem;">Login</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="dust" id="dust"></div>
+  <div class="hero-content">
+    <span class="small-caps d-block mb-3">Curated • Authenticated • Timeless</span>
+    <h1>HERITAGE HEAVEN</h1>
+    <p class="subhead">"Where Every Piece Has a Story"</p>
+    <p>Discover carefully curated antiques, timeless furniture, artworks and rare objects carrying the character of another era.</p>
+    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mt-4">
+      <a href="#collection" class="btn btn-gold">Explore Collection</a>
+      <a href="#contact" class="btn btn-outline-gold">Visit Our Gallery</a>
+    </div>
+    <div class="hero-label">CURATED • AUTHENTICATED • TIMELESS</div>
+  </div>
+</section>
+
+<!-- INTRODUCTION -->
+<section class="text-center" id="about">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 fade-up">
+        <span class="section-label">The Art of Preserving History</span>
+        <h2 class="intro-quote mb-4">"Some things are bought.<br>Others are inherited."</h2>
+        <div class="ornament-divider my-4"><i class="bi bi-diamond"></i></div>
+        <p class="text-parchment opacity-75 mb-3">At Heritage Heaven, we believe an antique is more than an object. It is a fragment of history — a piece of craftsmanship, culture and memory preserved for another generation.</p>
+        <p class="text-parchment opacity-75">Every object in our collection is carefully selected for its character, craftsmanship, historical value and ability to tell a story.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED COLLECTION -->
+<section class="bg-darkbrown" id="collection">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <span class="section-label">The Heritage Collection</span>
+      <h2 class="section-title">Rare Pieces. Remarkable Stories.</h2>
+      <div class="ornament-divider mt-3"><i class="bi bi-diamond"></i></div>
+    </div>
+    <div class="row g-4">
+      <!-- 01 Furniture -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="collection-card">
+          <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="Antique carved teak cabinet with brass fittings">
+          </div>
+          <div class="card-body">
+            <span class="collection-number">01</span>
+            <h3 class="collection-title">Antique Furniture</h3>
+            <a href="#" class="collection-link">Explore Collection →</a>
+          </div>
+        </div>
+      </div>
+      <!-- 02 Art -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="collection-card">
+          <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600&q=80" alt="Classical framed painting in a gallery setting">
+          </div>
+          <div class="card-body">
+            <span class="collection-number">02</span>
+            <h3 class="collection-title">Art & Paintings</h3>
+            <a href="#" class="collection-link">Explore Collection →</a>
+          </div>
+        </div>
+      </div>
+      <!-- 03 Sculptures -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="collection-card">
+          <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1544413660-299165566b1d?w=600&q=80" alt="Bronze antique sculpture of a classical figure">
+          </div>
+          <div class="card-body">
+            <span class="collection-number">03</span>
+            <h3 class="collection-title">Sculptures & Statues</h3>
+            <a href="#" class="collection-link">Explore Collection →</a>
+          </div>
+        </div>
+      </div>
+      <!-- 04 Clocks -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="collection-card">
+          <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=600&q=80" alt="Vintage brass mantel clock with intricate details">
+          </div>
+          <div class="card-body">
+            <span class="collection-number">04</span>
+            <h3 class="collection-title">Vintage Clocks</h3>
+            <a href="#" class="collection-link">Explore Collection →</a>
+          </div>
+        </div>
+      </div>
+      <!-- 05 Ceramics -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="collection-card">
+          <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=600&q=80" alt="Hand-painted porcelain vase with floral motifs">
+          </div>
+          <div class="card-body">
+            <span class="collection-number">05</span>
+            <h3 class="collection-title">Porcelain & Ceramics</h3>
+            <a href="#" class="collection-link">Explore Collection →</a>
+          </div>
+        </div>
+      </div>
+      <!-- 06 Collectibles -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="collection-card">
+          <div class="img-wrap">
+            <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=600&q=80" alt="Vintage gramophone and antique curiosities">
+          </div>
+          <div class="card-body">
+            <span class="collection-number">06</span>
+            <h3 class="collection-title">Collectibles & Curiosities</h3>
+            <a href="#" class="collection-link">Explore Collection →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED ARTIFACTS -->
+<section id="featured">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <span class="section-label">Featured Artifacts</span>
+      <h2 class="section-title">Selected from Our Private Collection</h2>
+      <div class="ornament-divider mt-3"><i class="bi bi-diamond"></i></div>
+    </div>
+    <div class="row g-4">
+      <!-- Product 1 -->
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="artifact-card">
+          <div class="img-wrap">
+            <span class="artifact-badge">One of One</span>
+            <img src="https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=600&q=80" alt="Victorian rosewood writing desk with brass handles">
+            <div class="artifact-overlay">
+              <button class="btn btn-outline-gold">View Artifact</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="artifact-category">Furniture</div>
+            <h3 class="artifact-title">Victorian Rosewood Writing Desk</h3>
+            <div class="artifact-era">Late 19th Century</div>
+            <div class="artifact-price">₹1,85,000</div>
+            <div class="artifact-actions">
+              <a href="#" class="view-link">View Details</a>
+              <button class="wishlist-btn" onclick="this.classList.toggle('active')"><i class="bi bi-heart"></i> Wishlist</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product 2 -->
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="artifact-card">
+          <div class="img-wrap">
+            <span class="artifact-badge">Curated Piece</span>
+            <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=600&q=80" alt="Anglo-Indian carved teak cabinet with intricate detailing">
+            <div class="artifact-overlay">
+              <button class="btn btn-outline-gold">View Artifact</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="artifact-category">Furniture</div>
+            <h3 class="artifact-title">Anglo-Indian Carved Teak Cabinet</h3>
+            <div class="artifact-era">Late 19th Century</div>
+            <div class="artifact-price">₹2,40,000</div>
+            <div class="artifact-actions">
+              <a href="#" class="view-link">View Details</a>
+              <button class="wishlist-btn" onclick="this.classList.toggle('active')"><i class="bi bi-heart"></i> Wishlist</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product 3 -->
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="artifact-card">
+          <div class="img-wrap">
+            <span class="artifact-badge">Authenticated</span>
+            <img src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=600&q=80" alt="French bronze mantel clock with ornate details">
+            <div class="artifact-overlay">
+              <button class="btn btn-outline-gold">View Artifact</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="artifact-category">Clocks</div>
+            <h3 class="artifact-title">French Bronze Mantel Clock</h3>
+            <div class="artifact-era">Early 20th Century</div>
+            <div class="artifact-price">₹95,000</div>
+            <div class="artifact-actions">
+              <a href="#" class="view-link">View Details</a>
+              <button class="wishlist-btn" onclick="this.classList.toggle('active')"><i class="bi bi-heart"></i> Wishlist</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product 4 -->
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="artifact-card">
+          <div class="img-wrap">
+            <span class="artifact-badge">One of One</span>
+            <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=600&q=80" alt="Mughal-inspired brass urn with engraved patterns">
+            <div class="artifact-overlay">
+              <button class="btn btn-outline-gold">View Artifact</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="artifact-category">Decor</div>
+            <h3 class="artifact-title">Mughal-Inspired Brass Urn</h3>
+            <div class="artifact-era">19th Century</div>
+            <div class="artifact-price">₹68,000</div>
+            <div class="artifact-actions">
+              <a href="#" class="view-link">View Details</a>
+              <button class="wishlist-btn" onclick="this.classList.toggle('active')"><i class="bi bi-heart"></i> Wishlist</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product 5 -->
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="artifact-card">
+          <div class="img-wrap">
+            <span class="artifact-badge">Curated Piece</span>
+            <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=600&q=80" alt="Antique Persian style mirror with carved frame">
+            <div class="artifact-overlay">
+              <button class="btn btn-outline-gold">View Artifact</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="artifact-category">Decor</div>
+            <h3 class="artifact-title">Antique Persian Style Mirror</h3>
+            <div class="artifact-era">Early 20th Century</div>
+            <div class="artifact-price">₹1,25,000</div>
+            <div class="artifact-actions">
+              <a href="#" class="view-link">View Details</a>
+              <button class="wishlist-btn" onclick="this.classList.toggle('active')"><i class="bi bi-heart"></i> Wishlist</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product 6 -->
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="artifact-card">
+          <div class="img-wrap">
+            <span class="artifact-badge">Authenticated</span>
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="Colonial teakwood armchair with cane back">
+            <div class="artifact-overlay">
+              <button class="btn btn-outline-gold">View Artifact</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="artifact-category">Furniture</div>
+            <h3 class="artifact-title">Colonial Teakwood Armchair</h3>
+            <div class="artifact-era">19th Century</div>
+            <div class="artifact-price">₹78,000</div>
+            <div class="artifact-actions">
+              <a href="#" class="view-link">View Details</a>
+              <button class="wishlist-btn" onclick="this.classList.toggle('active')"><i class="bi bi-heart"></i> Wishlist</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product 7 -->
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="artifact-card">
+          <div class="img-wrap">
+            <span class="artifact-badge">One of One</span>
+            <img src="https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=600&q=80" alt="Hand-painted porcelain vase with intricate floral design">
+            <div class="artifact-overlay">
+              <button class="btn btn-outline-gold">View Artifact</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="artifact-category">Ceramics</div>
+            <h3 class="artifact-title">Hand-Painted Porcelain Vase</h3>
+            <div class="artifact-era">19th Century</div>
+            <div class="artifact-price">₹54,000</div>
+            <div class="artifact-actions">
+              <a href="#" class="view-link">View Details</a>
+              <button class="wishlist-btn" onclick="this.classList.toggle('active')"><i class="bi bi-heart"></i> Wishlist</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product 8 -->
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="artifact-card">
+          <div class="img-wrap">
+            <span class="artifact-badge">Curated Piece</span>
+            <img src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=600&q=80" alt="Vintage mechanical desk clock with brass casing">
+            <div class="artifact-overlay">
+              <button class="btn btn-outline-gold">View Artifact</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="artifact-category">Clocks</div>
+            <h3 class="artifact-title">Vintage Mechanical Desk Clock</h3>
+            <div class="artifact-era">Early 20th Century</div>
+            <div class="artifact-price">₹42,000</div>
+            <div class="artifact-actions">
+              <a href="#" class="view-link">View Details</a>
+              <button class="wishlist-btn" onclick="this.classList.toggle('active')"><i class="bi bi-heart"></i> Wishlist</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHENTICITY -->
+<section class="bg-charcoal">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <span class="section-label">Authenticity Matters</span>
+      <h2 class="section-title">Every Piece Deserves a Story —<br>and Every Story Deserves Evidence.</h2>
+      <p class="text-parchment opacity-75 mt-3">Every artifact is carefully evaluated for provenance, materials, craftsmanship, age, condition, restoration history and historical context.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="auth-card text-center">
+          <i class="bi bi-patch-check"></i>
+          <h5>Authenticated</h5>
+          <p>Carefully examined before entering our collection.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="auth-card text-center">
+          <i class="bi bi-file-text"></i>
+          <h5>Documented</h5>
+          <p>Important details and provenance are recorded.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="auth-card text-center">
+          <i class="bi bi-tools"></i>
+          <h5>Restored</h5>
+          <p>Restoration is performed with respect for original character.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 fade-up">
+        <div class="auth-card text-center">
+          <i class="bi bi-star"></i>
+          <h5>One of One</h5>
+          <p>Every significant antique is unique.</p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5 fade-up">
+      <a href="#" class="btn btn-outline-gold">Learn About Our Authentication Process</a>
+    </div>
+  </div>
+</section>
+
+<!-- OUR STORY -->
+<section id="story">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 fade-up">
+        <span class="section-label">Our Story</span>
+        <h2 class="section-title">A Passion for the Past</h2>
+        <p class="text-parchment opacity-75 mb-3">Heritage Heaven was created from a simple belief: <em class="text-gold">"History should not disappear."</em></p>
+        <p class="text-parchment opacity-75 mb-3">From forgotten family heirlooms to rare furniture and decorative arts, we search for objects that deserve another chapter.</p>
+        <p class="text-parchment opacity-75">Our collection brings together pieces from different eras, cultures and traditions — carefully curated for collectors, designers and people who simply appreciate beautiful things.</p>
+        <div class="row g-4 mt-5">
+          <div class="col-6 col-md-3">
+            <div class="stat-number">25+</div>
+            <div class="stat-label">Years Curatorial Experience</div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Artifacts Preserved</div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-number">32+</div>
+            <div class="stat-label">Collections</div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-number">12+</div>
+            <div class="stat-label">Regions Explored</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 fade-up">
+        <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=800&q=80" alt="Interior of a luxurious antique store with dark wood furniture" class="img-fluid reveal-img" style="border: 1px solid var(--border-gold);">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESTORATION -->
+<section class="bg-darkbrown" id="restoration">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <span class="section-label">The Restoration Atelier</span>
+      <h2 class="section-title">Preserving Age Without Erasing Character</h2>
+      <p class="section-sub mt-2">Museum-quality conservation for pieces that deserve another generation.</p>
+    </div>
+    <div class="row g-4 mb-5">
+      <div class="col-md-6 col-lg-3 fade-up">
+        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80" alt="Antique restoration workshop with craftsman tools" class="img-fluid reveal-img" style="border: 1px solid var(--border-gold);">
+      </div>
+      <div class="col-md-6 col-lg-3 fade-up">
+        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80" alt="Craftsman carefully restoring antique wooden furniture" class="img-fluid reveal-img" style="border: 1px solid var(--border-gold);">
+      </div>
+      <div class="col-md-6 col-lg-3 fade-up">
+        <img src="https://images.unsplash.com/photo-1581092919535-7146ff1a590b?w=600&q=80" alt="Brass restoration and polishing in a workshop" class="img-fluid reveal-img" style="border: 1px solid var(--border-gold);">
+      </div>
+      <div class="col-md-6 col-lg-3 fade-up">
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80" alt="Museum-quality artifact preservation and documentation" class="img-fluid reveal-img" style="border: 1px solid var(--border-gold);">
+      </div>
+    </div>
+    <div class="row g-4 text-center">
+      <div class="col-md-4 fade-up">
+        <div class="step-number">01</div>
+        <h5 class="serif text-cream mt-2">Discover</h5>
+        <p class="text-parchment opacity-75 small">Assessment & documentation</p>
+      </div>
+      <div class="col-md-4 fade-up">
+        <div class="step-number">02</div>
+        <h5 class="serif text-cream mt-2">Restore</h5>
+        <p class="text-parchment opacity-75 small">Careful conservation</p>
+      </div>
+      <div class="col-md-4 fade-up">
+        <div class="step-number">03</div>
+        <h5 class="serif text-cream mt-2">Preserve</h5>
+        <p class="text-parchment opacity-75 small">Ready for another generation</p>
+      </div>
+    </div>
+    <div class="text-center mt-5 fade-up">
+      <a href="#" class="btn btn-outline-gold">Discover Our Restoration Process</a>
+    </div>
+  </div>
+</section>
+
+<!-- ARTIFACT OF THE MONTH -->
+<section class="p-0">
+  <div class="artifact-month">
+    <img src="https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=1200&q=80" alt="The Maharaja's Writing Desk — a carved teak desk from circa 1890">
+    <div class="artifact-month-content">
+      <div class="container">
+        <span class="section-label">Artifact of the Month</span>
+        <h2 class="section-title" style="font-size: clamp(1.8rem, 4vw, 3rem);">"THE MAHARAJA'S WRITING DESK"</h2>
+        <p class="text-gold serif mb-2" style="font-size: 1.2rem;">Circa 1890</p>
+        <p class="text-parchment opacity-75 mb-4" style="max-width: 500px;">A beautifully carved teak writing desk inspired by Indo-European craftsmanship.</p>
+        <div class="d-flex align-items-center gap-4 mb-4">
+          <div>
+            <span class="small-caps d-block mb-1">Price</span>
+            <span class="serif text-gold" style="font-size: 1.8rem;">₹2,75,000</span>
+          </div>
+          <div>
+            <span class="small-caps d-block mb-1">Status</span>
+            <span class="text-cream" style="letter-spacing: 0.2em; font-size: 0.8rem;">ONE OF ONE</span>
+          </div>
+        </div>
+        <div class="d-flex gap-3">
+          <a href="#" class="btn btn-gold">View Artifact</a>
+          <a href="#" class="btn btn-outline-gold">Enquire</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNAL -->
+<section id="journal">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <span class="section-label">The Heritage Journal</span>
+      <h2 class="section-title">Stories & Knowledge</h2>
+      <div class="ornament-divider mt-3"><i class="bi bi-diamond"></i></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="journal-card">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="Antique wooden furniture with visible patina and craftsmanship">
+          <div class="card-body">
+            <div class="journal-meta">Furniture • March 12, 2026</div>
+            <h3 class="journal-title">How to Tell if Furniture is Truly Antique</h3>
+            <p class="journal-desc">Learn the telltale signs of genuine age — from joinery and patina to wood grain and hardware.</p>
+            <a href="#" class="read-link">Read Article →</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="journal-card">
+          <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=600&q=80" alt="Indian teak furniture with intricate carvings">
+          <div class="card-body">
+            <div class="journal-meta">Craftsmanship • February 28, 2026</div>
+            <h3 class="journal-title">The Beauty of Indian Teak Furniture</h3>
+            <p class="journal-desc">Explore the rich history and enduring appeal of teak wood in Indian antique furniture.</p>
+            <a href="#" class="read-link">Read Article →</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="journal-card">
+          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600&q=80" alt="Old documents and provenance records for antiques">
+          <div class="card-body">
+            <div class="journal-meta">Collecting • February 15, 2026</div>
+            <h3 class="journal-title">Understanding Provenance</h3>
+            <p class="journal-desc">Why the history of ownership matters and how to verify the story behind your artifact.</p>
+            <a href="#" class="read-link">Read Article →</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="journal-card">
+          <img src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=600&q=80" alt="Vintage clock representing antique versus vintage distinction">
+          <div class="card-body">
+            <div class="journal-meta">Guide • January 30, 2026</div>
+            <h3 class="journal-title">Antique vs Vintage: What's the Difference?</h3>
+            <p class="journal-desc">A clear guide to understanding the terminology used in the world of collectibles.</p>
+            <a href="#" class="read-link">Read Article →</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="journal-card">
+          <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80" alt="Restoration workshop with tools and furniture">
+          <div class="card-body">
+            <div class="journal-meta">Restoration • January 18, 2026</div>
+            <h3 class="journal-title">How Antique Furniture Is Restored</h3>
+            <p class="journal-desc">Behind the scenes at our atelier — the careful process of preserving history.</p>
+            <a href="#" class="read-link">Read Article →</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="journal-card">
+          <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=600&q=80" alt="Antique ceramics and collectibles for first-time collectors">
+          <div class="card-body">
+            <div class="journal-meta">Collecting • January 5, 2026</div>
+            <h3 class="journal-title">5 Things Every First-Time Collector Should Know</h3>
+            <p class="journal-desc">Start your collection with confidence — expert advice for new enthusiasts.</p>
+            <a href="#" class="read-link">Read Article →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="bg-charcoal">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <span class="section-label">Testimonials</span>
+      <h2 class="section-title">Voices from Our Collectors</h2>
+      <div class="ornament-divider mt-3"><i class="bi bi-diamond"></i></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4 fade-up">
+        <div class="testimonial">
+          <p>"Heritage Heaven feels less like a store and more like walking through a private museum."</p>
+          <div class="author">— Arjun Mehta, Collector</div>
+        </div>
+      </div>
+      <div class="col-md-4 fade-up">
+        <div class="testimonial">
+          <p>"The restoration work was exceptional. They preserved the character of the furniture instead of making it look new."</p>
+          <div class="author">— Riya Kapoor, Interior Designer</div>
+        </div>
+      </div>
+      <div class="col-md-4 fade-up">
+        <div class="testimonial">
+          <p>"Every piece had a story, and the team took the time to explain it."</p>
+          <div class="author">— Daniel Thomas, Private Collector</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVATE VIEWING -->
+<section id="contact">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-5 fade-up">
+        <span class="section-label">Visit Heritage Heaven</span>
+        <h2 class="section-title">Private Viewing</h2>
+        <p class="text-parchment opacity-75 mb-4">Some pieces deserve to be experienced in person. Book a private viewing of our gallery and collection.</p>
+        <div class="mb-4">
+          <div class="small-caps mb-2">Opening Hours</div>
+          <p class="text-parchment mb-1">Monday – Saturday: 10:00 AM – 7:00 PM</p>
+          <p class="text-parchment">Sunday: By Appointment</p>
+        </div>
+        <div class="mb-4">
+          <div class="small-caps mb-2">Address</div>
+          <p class="text-parchment mb-1">21 Heritage Lane, Fort District,</p>
+          <p class="text-parchment">Mumbai, Maharashtra, India</p>
+        </div>
+        <div>
+          <div class="small-caps mb-2">Contact</div>
+          <p class="text-parchment mb-1"><i class="bi bi-telephone me-2"></i> +91 98765 43210</p>
+          <p class="text-parchment"><i class="bi bi-envelope me-2"></i> hello@heritageheaven.in</p>
+        </div>
+      </div>
+      <div class="col-lg-7 fade-up">
+        <form class="row g-3">
+          <div class="col-md-6">
+            <label for="pvName" class="form-label small-caps">Full Name</label>
+            <input type="text" class="form-control newsletter-input" id="pvName" placeholder="Your name" required>
+          </div>
+          <div class="col-md-6">
+            <label for="pvEmail" class="form-label small-caps">Email</label>
+            <input type="email" class="form-control newsletter-input" id="pvEmail" placeholder="you@example.com" required>
+          </div>
+          <div class="col-md-6">
+            <label for="pvPhone" class="form-label small-caps">Phone</label>
+            <input type="tel" class="form-control newsletter-input" id="pvPhone" placeholder="+91 98765 43210">
+          </div>
+          <div class="col-md-6">
+            <label for="pvDate" class="form-label small-caps">Preferred Date</label>
+            <input type="date" class="form-control newsletter-input" id="pvDate">
+          </div>
+          <div class="col-md-6">
+            <label for="pvTime" class="form-label small-caps">Preferred Time</label>
+            <input type="time" class="form-control newsletter-input" id="pvTime">
+          </div>
+          <div class="col-md-6">
+            <label for="pvVisitors" class="form-label small-caps">Number of Visitors</label>
+            <input type="number" class="form-control newsletter-input" id="pvVisitors" value="1" min="1">
+          </div>
+          <div class="col-12">
+            <label for="pvMessage" class="form-label small-caps">Message</label>
+            <textarea class="form-control newsletter-input" id="pvMessage" rows="3" placeholder="Tell us about your interests..."></textarea>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-gold">Request Private Viewing</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="bg-burgundy text-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 fade-up">
+        <span class="section-label">The Heirloom Letter</span>
+        <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.5rem);">Occasional stories about antiques, craftsmanship, restoration and newly discovered treasures.</h2>
+        <form class="d-flex flex-column flex-sm-row gap-3 mt-4 justify-content-center">
+          <input type="email" class="form-control newsletter-input" placeholder="Your email address" style="max-width: 350px;">
+          <button type="submit" class="btn btn-gold">Subscribe</button>
+        </form>
+        <p class="text-parchment opacity-50 small mt-3">No spam. Only stories worth preserving.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <div class="navbar-brand mb-3" style="font-size: 1.6rem;">
+          HERITAGE HEAVEN
+          <small>ANTIQUE & HERITAGE COLLECTIONS</small>
+        </div>
+        <p class="text-parchment opacity-75" style="font-size: 0.9rem;">"Preserving the past. Curating the extraordinary."</p>
+        <div class="d-flex gap-3 mt-3">
+          <a href="#" class="text-gold" aria-label="Instagram"><i class="bi bi-instagram fs-5"></i></a>
+          <a href="#" class="text-gold" aria-label="Facebook"><i class="bi bi-facebook fs-5"></i></a>
+          <a href="#" class="text-gold" aria-label="Pinterest"><i class="bi bi-pinterest fs-5"></i></a>
+          <a href="#" class="text-gold" aria-label="YouTube"><i class="bi bi-youtube fs-5"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>Collection</h6>
+        <a href="#">Antique Furniture</a>
+        <a href="#">Art & Paintings</a>
+        <a href="#">Sculptures</a>
+        <a href="#">Clocks</a>
+        <a href="#">Ceramics</a>
+        <a href="#">Collectibles</a>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>About</h6>
+        <a href="#">Our Story</a>
+        <a href="#">Authentication</a>
+        <a href="#">Restoration</a>
+        <a href="#">Journal</a>
+        <a href="#">Private Viewing</a>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>Customer</h6>
+        <a href="#">Contact</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">FAQ</a>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>Social</h6>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">Pinterest</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+    <div class="border-top border-gold mt-5 pt-4 text-center">
+      <p class="text-parchment opacity-50 small mb-1">© 2026 Heritage Heaven. All Rights Reserved.</p>
+      <p class="text-gold small" style="letter-spacing: 0.2em;">"Every piece has a story."</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const API = 'http://localhost:3000/api';
+
+// ---------- AUTH STATE ----------
+let currentUser = JSON.parse(localStorage.getItem('hh_user') || 'null');
+const token = () => localStorage.getItem('hh_token');
+
+function updateAuthUI() {
+  const loginBtn = document.querySelector('.nav-icons .btn-outline-gold');
+  if (currentUser && loginBtn) {
+    loginBtn.textContent = currentUser.name.split(' ')[0];
+    loginBtn.href = '#';
+    loginBtn.onclick = (e) => { e.preventDefault(); logout(); };
+  }
+}
+function logout() {
+  localStorage.removeItem('hh_user');
+  localStorage.removeItem('hh_token');
+  location.reload();
+}
+updateAuthUI();
+
+// ---------- LOAD FEATURED ARTIFACTS FROM BACKEND ----------
+async function loadFeatured() {
+  const res = await fetch(`${API}/artifacts/featured?limit=8`);
+  const artifacts = await res.json();
+
+  const grid = document.querySelector('#featured .row.g-4');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  artifacts.forEach(a => {
+    const card = document.createElement('div');
+    card.className = 'col-md-6 col-lg-3 fade-up';
+    card.innerHTML = `
+      <div class="artifact-card">
+        <div class="img-wrap">
+          <span class="artifact-badge">${a.isForSale ? 'One of One' : 'Sold'}</span>
+          <img src="${a.imageUrl}" alt="${a.title}">
+          <div class="artifact-overlay">
+            <button class="btn btn-outline-gold" onclick="location.href='product.html?id=${a.id}'">View Artifact</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="artifact-category">${a.category}</div>
+          <h3 class="artifact-title">${a.title}</h3>
+          <div class="artifact-era">${a.period || ''}</div>
+          <div class="artifact-price">₹${a.price.toLocaleString('en-IN')}</div>
+          <div class="artifact-actions">
+            <a href="product.html?id=${a.id}" class="view-link">View Details</a>
+            <button class="wishlist-btn" onclick="toggleWishlist(${a.id}, this)">
+              <i class="bi bi-heart"></i> Wishlist
+            </button>
+          </div>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+
+  // Re-run intersection observer
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+}
+
+// ---------- WISHLIST ----------
+async function toggleWishlist(artifactId, btn) {
+  if (!currentUser) {
+    if (confirm('Please login to save artifacts. Go to login page?')) {
+      location.href = 'login.html';
+    }
+    return;
+  }
+  const isActive = btn.classList.contains('active');
+  const method = isActive ? 'DELETE' : 'POST';
+  const res = await fetch(`${API}/wishlist/${artifactId}`, {
+    method,
+    headers: { 'Authorization': `Bearer ${token()}` }
+  });
+  if (res.ok) btn.classList.toggle('active');
+}
+
+// ---------- PRIVATE VIEWING FORM ----------
+const viewingForm = document.querySelector('#contact form');
+if (viewingForm) {
+  viewingForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(viewingForm);
+    const payload = {
+      name: viewingForm.querySelector('#pvName').value,
+      email: viewingForm.querySelector('#pvEmail').value,
+      phone: viewingForm.querySelector('#pvPhone').value,
+      date: viewingForm.querySelector('#pvDate').value,
+      time: viewingForm.querySelector('#pvTime').value,
+      visitors: Number(viewingForm.querySelector('#pvVisitors').value) || 1,
+      message: viewingForm.querySelector('#pvMessage').value
+    };
+    const res = await fetch(`${API}/appointments`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (res.ok) {
+      alert('Thank you! We will confirm your private viewing shortly.');
+      viewingForm.reset();
+    } else {
+      alert('Something went wrong. Please try again.');
+    }
+  });
+}
+
+// ---------- NEWSLETTER ----------
+document.querySelector('section.bg-burgundy form')?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  alert('Thank you for subscribing to The Heirloom Letter.');
+  e.target.reset();
+});
+
+// ---------- INITIALIZE ----------
+loadFeatured();
+</script>
+  // Navbar scroll effect
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // Hero parallax
+  const heroBg = document.getElementById('heroBg');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    if (heroBg) {
+      heroBg.style.transform = `scale(1.1) translateY(${scrolled * 0.25}px)`;
+    }
+  });
+
+  // Dust particles
+  const dustContainer = document.getElementById('dust');
+  if (dustContainer) {
+    for (let i = 0; i < 40; i++) {
+      const span = document.createElement('span');
+      span.style.left = Math.random() * 100 + '%';
+      span.style.animationDelay = Math.random() * 12 + 's';
+      span.style.animationDuration = (8 + Math.random() * 8) + 's';
+      span.style.width = span.style.height = (2 + Math.random() * 3) + 'px';
+      span.style.opacity = 0.1 + Math.random() * 0.3;
+      dustContainer.appendChild(span);
+    }
+  }
+
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up, .reveal-img').forEach(el => observer.observe(el));
+
+  // Wishlist toggle
+  document.querySelectorAll('.wishlist-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      this.classList.toggle('active');
+    });
+  });
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target && this.getAttribute('href') !== '#') {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+  
+</script>
+</body>
+</html>
